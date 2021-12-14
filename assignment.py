@@ -1,4 +1,18 @@
+#part 1
+import math
 
+
+def my_sqrt(a):
+    x = 1
+    while True:
+        y = (x + a / x) / 2.0
+        if y == x:
+            break
+        x = y
+
+    return y
+
+#part 2
 import math
 
 
