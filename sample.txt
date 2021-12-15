@@ -1,0 +1,1609 @@
+Discussion Assignment Unit 5
+by Alen Savatic (Instructor) - Wednesday, 10 November 2021, 10:37 PM
+Number of replies: 63
+This assignment is based on Exercise 8.4 from your textbook. Each of the following Python functions is supposed to check whether its argument has any lowercase letters.
+
+
+For each function, describe what it actually does when called with a string argument. If it does not correctly check for lowercase letters, give an example argument that produces incorrect results, and describe why the result is incorrect.
+
+# 1
+
+def any_lowercase1(s):
+     for c in s:
+          if c.islower():
+               return True
+          else:
+               return False
+
+
+# 2
+
+def any_lowercase2(s):
+     for c in s:
+          if 'c'.islower():
+               return 'True'
+          else:
+               return 'False'
+
+
+# 3
+
+def any_lowercase3(s):
+     for c in s:
+          flag = c.islower()
+     return flag
+
+
+# 4
+
+def any_lowercase4(s):
+     flag = False
+     for c in s:
+          flag = flag or c.islower()
+     return flag
+
+
+# 5
+
+def any_lowercase5(s):
+     for c in s:
+          if not c.islower():
+               return False
+     return True
+
+
+141 words
+
+Picture of Mikhail Chirkov
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Mikhail Chirkov - Thursday, 9 December 2021, 8:33 AM
+# 1
+def any_lowercase1(s):
+     for c in s:
+          if c.islower():
+               return True
+          else:
+               return False
+
+Function #1 iterates over string and return True if taken for iteration letter is lowercase, or False otherwise. The problem here is that only the first letter will be checked because the return statement will end the whole function. The wrong result will be for any input string that starts with an uppercase letter, for example, "Test".
+
+# 2
+def any_lowercase2(s):
+     for c in s:
+          if 'c'.islower():
+               return 'True'
+          else:
+               return 'False'
+
+Function #2 always returns "True" string because it checks if string "c" is lowercase, and it actually is. If I pass "UP" this will return "True" string and the result will always be the same.
+
+# 3
+def any_lowercase3(s):
+     for c in s:
+          flag = c.islower()
+     return flag
+
+Function #3 returns True is the last letter of string is lowercase, because the flag value is changed for each letter of string. For example, output for "tesT" will be False.
+
+
+# 4
+def any_lowercase4(s):
+     flag = False
+     for c in s:
+          flag = flag or c.islower()
+     return flag
+
+Function #4 looks like a correct one in terms of results. If one of the letters in the string is lowercase, then the flag value will be changed to True as "False or True" will result to true, and then any other combination "True or False" and "True or True" will be true. That means we get correct result for any string input. So, here all string inputs with lowercase will result to True, and to False otherwise.
+
+# 5
+def any_lowercase5(s):
+     for c in s:
+          if not c.islower():
+               return False
+     return True
+
+Function #5 will return False if any letter of the string is not lowercase. So, for inputs like "teSt", "tesT", "Test" etc. the result will be False, which is wrong. True will be the case only if all letters of the string are lowercase.
+321 words
+
+Rate: 
+Rate...
+Picture of Pascoal Bonito
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Pascoal Bonito - Saturday, 11 December 2021, 7:01 PM
+Good and accurate answers. but have you tried calling the function with lowercase in different position? i haven't. i was just wondering? otherwise. work well done!
+26 words
+
+Picture of Mimori Kyoma
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Sunday, 12 December 2021, 6:54 AM
+Hello, Mikhail.
+As always, the explanations were concise and easy to understand. Also, I was glad because your thoughts on each code seemed to be same as mine. However, if possible, it would be easier to understand if you specified whether each code was correct or wrong.
+47 words
+
+Picture of Alfred Malome
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Alfred Malome - Wednesday, 15 December 2021, 9:56 PM
+Your answers are well presented and easy to understand. your sharing has been educative to this course. Good job.
+19 words
+
+Picture of Nurul Huda Ibrahim
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Monday, 13 December 2021, 11:15 PM
+Hi Mikhail,
+
+Great work. your consistency in your work has shown that you fully understand the scope of the assignment. Simple and yet very insightful information which I learned for it. Thank you
+33 words
+
+Picture of Chante Plaatjies
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Chante Plaatjies - Tuesday, 14 December 2021, 11:17 AM
+Your answers are easy to understand and the accuracy is top tier. I enjoyed reading your discussion.
+17 words
+
+Picture of Hein Zaw
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Tuesday, 14 December 2021, 5:08 PM
+Your explanation is short and dynamic. The format for your post is also neat. I think you have a programming experience since you have no flaws in your post.
+29 words
+
+Picture of Melash Molla
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Melash Molla - Wednesday, 15 December 2021, 4:15 PM
+you are doing and elaborating in clear and understandable way. but I need a further explanation on on case 2.
+20 words
+
+Picture of Muhammad Daniyal Khan
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Muhammad Daniyal Khan - Wednesday, 15 December 2021, 7:46 PM
+Dear Student, Good Work! and I appreciate your efforts, hard work, and efforts in this discussion assignment and I hope that you will continue it in your later assignment.
+29 words
+
+Picture of Mimori Kyoma
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Friday, 10 December 2021, 4:32 PM
+#1 This function is wrong for checking whether a string contains any lowercase letters. Because the function is finished when 'return' runs, this #1 function can check only the first letter of an argument. So, for example, an argument 'Abc', will output False, although it contains lowercases b and c.
+>>> any_lowercase1('Abc')
+False
+
+#2 This function is wrong for checking whether a string contains any lowercase letters. Because the string 'c' of lowercase is used instead of variable c, the if conditional statement returns True at any time. So, for example, an argument, 'A', will output True, although A is uppercase. Additionally, the both return values of 'True' and 'False' are string, too. In this sense, this function is wrong, too
+>>> any_lowercase2('A')
+'True'
+
+#3 This function is wrong for checking whether a string contains any lowercase letters, too. Because the content of the variable 'flag' changes every time in the for loop, the function returns False when the last letter of an argument is uppercase. So, for example, the function with an argument 'abC' returns False, although a and b are lowercase.
+>>> any_lowercase3('abC')
+False
+
+#4 This function is correct for checking whether a string contains any lowercase letters. In this function, a sum-set operation is used when assigning a value to the variable flag in the for loop. In other words, the answer of 'False or False' is False, but the answers of 'True or True', 'True or False' and 'False or True' are True. Thanks to this, once the content of the variable 'flag' becomes True, the content doesn't change anymore. So if there is even one lowercase letter, the output will be True, and if an argument is all uppercase, the output will be False.
+
+#5 This function is correct for checking whether a string contains any lowercase letters, too. If there is even a single uppercase letter, False is returned at that point; if all are lowercase, True is returned after the loop is completed. Therefore, this function is correct.
+338 words
+
+Rate: 
+Rate...
+Picture of Mikhail Chirkov
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Mikhail Chirkov - Saturday, 11 December 2021, 4:28 PM
+Great explanation as always. All questions covered/ Well done.
+9 words
+
+Picture of Mimori Kyoma
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Sunday, 12 December 2021, 6:45 AM
+Hello Mikhail, and thank you for your feedback.
+8 words
+
+Picture of Pascoal Bonito
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Pascoal Bonito - Saturday, 11 December 2021, 7:03 PM
+hi! i like your answers. can you try calling it with lowercases in different position? just for curiosity, to see the output. otherwise Job well done.
+26 words
+
+Picture of Mimori Kyoma
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Sunday, 12 December 2021, 7:06 AM
+Hello Pascoal, and thank you for your feedback.
+Do these outputs meet your requests?
+
+#1
+>>> any_lowercase1('aBc')
+True
+>>> any_lowercase1('abC')
+True
+#2
+>>> any_lowercase2('c')
+'True'
+
+#3
+>>> any_lowercase3('Abc')
+True
+>>> any_lowercase3('aBc')
+True
+32 words
+
+Picture of Pascoal Bonito
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Pascoal Bonito - Monday, 13 December 2021, 1:40 PM
+i love that. as future scientists, we should try anything out of anything. keep it up!
+16 words
+
+Picture of Mimori Kyoma
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Tuesday, 14 December 2021, 4:28 AM
+Thank you!
+2 words
+
+Picture of Nurul Huda Ibrahim
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Monday, 13 December 2021, 11:00 PM
+Hi Mimori,
+
+As usual, I like the way you explain everything simple and yet full of knowledge. Your work was consistent every week. Thank you so much for giving your thoughts on the assignment. Keep it up on your good and hard work.
+43 words
+
+Picture of Mimori Kyoma
+In reply to Nurul Huda Ibrahim
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Tuesday, 14 December 2021, 4:29 AM
+Hello Nurul, and thank you for your feedback!
+8 words
+
+Picture of Chante Plaatjies
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Chante Plaatjies - Tuesday, 14 December 2021, 11:18 AM
+Hi
+
+Your work is very neat, easy to understand and well executed. Well done!
+14 words
+
+Picture of Mimori Kyoma
+In reply to Chante Plaatjies
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Tuesday, 14 December 2021, 3:56 PM
+Hello Chante, and thank you for your feedback.
+8 words
+
+Picture of Hein Zaw
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Tuesday, 14 December 2021, 5:17 PM
+Hi Mimori Kyoma,
+I think #5 function is not correct. If the string argument is "STRing", the function will return False. Since the function is supposed to check whether its argument has any lowercase letters. Also, "STRing" contains lowercase letters. The function should return True to be a correct function when "STRing" is given as an argument.
+57 words
+
+Picture of Alfred Malome
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Alfred Malome - Wednesday, 15 December 2021, 9:59 PM
+You have done a great job as your answers are explained in detail. You have done enough research on this unit great work
+23 words
+
+Picture of Pascoal Bonito
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Pascoal Bonito - Saturday, 11 December 2021, 6:35 PM
+# Example 1
+
+def any_lowercase1(s):
+for c in s:
+if c.islower():
+return True
+else:
+return False
+
+#drive code and result
+any_lowercase1('iNTERNET')
+True
+any_lowercase1('INTERNEt')
+False
+any_lowercase1('INTERNET')
+False
+any_lowercase2('internet')
+'True'
+# returns 'True' only if the firts letter in the string or all letters are lower case. else, it returns false.
+
+#Example 2
+def any_lowercase2(s):
+for c in s:
+if 'c'.islower():
+return 'True'
+else:
+return 'False'
+
+#drive code and result
+any_lowercase2('iNTERNET')
+'True'
+any_lowercase2('INTERNET')
+'True'
+any_lowercase2('iNTERNEt')
+'True'
+any_lowercase2('internet')
+'True'
+any_lowercase2('INTERNEt')
+'True
+# whether the string has lower or upper cases it will return 'True' anyway.
+
+# Example 3
+def any_lowercase3(s):
+for c in s:
+flag = c.islower()
+return flag
+
+#drive code and result
+any_lowercase3('iNTERNET')
+False
+any_lowercase3('INTERNEt')
+True
+any_lowercase3('INTERNET')
+False
+any_lowercase3('internet')
+True
+# it will only display 'True' when the string is completly in lower cases or the last letter is lower case. else, it is all 'False'.
+
+# Example 4
+def any_lowercase4(s):
+flag = False
+for c in s:
+flag = flag or c.islower()
+return flag
+
+# drive code and output
+any_lowercase4('internet')
+True
+any_lowercase4('iNTERNET')
+True
+any_lowercase4('INTERNEt')
+True
+any_lowercase4('INTERNET')
+False
+# It will display 'True' if there is a lowercase letter in the begining and the end of the string or if the entire string is in lowercases. else it will display 'False'.
+
+# Example 5
+def any_lowercase5(s):
+for c in s:
+if not c.islower():
+return False
+return True
+
+# drive code and output
+any_lowercase5('internet')
+True
+any_lowercase5('iNTERNET')
+False
+any_lowercase5('INTERNEt')
+False
+any_lowercase5('INTERNET')
+False
+# it will dasplay 'True' only if the string has a complete lowercase. else, it will display 'False'
+256 words
+
+ unit5 discussion forum.py
+Rate: 
+Rate...
+Picture of Mimori Kyoma
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Sunday, 12 December 2021, 7:13 AM
+Hello, Pascoal.
+I was glad that your outputs of each code are same as mine. However, it seemed that there are no explanations about what each code actually did. Also, if you possible, you should think about indenting and formatting your code so that it is easy to understand and works quickly when copied and pasted.
+56 words
+
+Picture of Pascoal Bonito
+In reply to Mimori Kyoma
+Re: Discussion Assignment Unit 5
+by Pascoal Bonito - Monday, 13 December 2021, 1:43 PM
+may be i just forgot to do so, because i always do that. anyway, thanks for reminding me. next time i will be more cautious about that.
+27 words
+
+Picture of Mimori Kyoma
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Tuesday, 14 December 2021, 4:30 AM
+Thank you for your reply!
+5 words
+
+Picture of Nurul Huda Ibrahim
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Monday, 13 December 2021, 11:19 PM
+Hi Pascoal,
+
+Your coding was simple and easy to understand. Thank you for putting your effort to share your thought on this assignment. Great job!
+25 words
+
+Picture of Mikhail Chirkov
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Mikhail Chirkov - Tuesday, 14 December 2021, 1:46 PM
+Hi, great post. But, as mentioned, you should think about formatting your response.
+13 words
+
+Picture of Hein Zaw
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Tuesday, 14 December 2021, 5:29 PM
+Hi Pascoal Bonito,
+You need to explain more about the code. I think you have a typo in #1 since you call any_lowercase2 function before defining it. To format the code, you first need to click Advanced when replying the post. Then, select the code and click the 'A' button with an arrow pointing downwards. After that, you need to select Pre-formatted even if the code looks already preformatted. You can also change the format after you posted to the forum in five minutes. During that five minutes, you need to check your post format and errors. You can edit any format or typos in five minutes.
+107 words
+
+Picture of Muhammad Daniyal Khan
+In reply to Pascoal Bonito
+Re: Discussion Assignment Unit 5
+by Muhammad Daniyal Khan - Wednesday, 15 December 2021, 7:22 PM
+Dear Pascoal, Great Work! and I appreciate your efforts, full dedication, and hard work in this assignment. I have checked your program it's good but I think you have to little bit explain your code. However, nice efforts and keep it up.
+42 words
+
+Picture of Chante Plaatjies
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Chante Plaatjies - Monday, 13 December 2021, 1:39 PM
+# 1
+#INPUT:
+def any_lowercase1(s):
+for c in s:
+if c.islower():
+return True
+else:
+return False
+
+print(any_lowercase1("BaNana"))# This will return False
+print(any_lowercase1("bananA"))# This will return True
+print(any_lowercase1("BANANa"))# This will return False
+
+#OUTPUT:
+=== RESTART: C:/Users/dell/AppData/Local/Programs/Python/Python39/Scripts/SX.py ===
+False
+True
+False
+
+Only the first letter of the string is checked in this situation. If it's a lower case letter, it'll return True; if it's not, it'll return False, irrespective of whether the string contains any other lower case letters.
+
+#INPUT:
+# 2
+def any_lowercase2(s):
+for c in s:
+if 'c'.islower():
+return 'True'
+else:
+return 'False'
+print(any_lowercase2("BanAna"))#This will return True
+print(any_lowercase2("bananA"))# This will return True
+print(any_lowercase2(" "))# This will return True
+
+#OUTPUT:
+=== RESTART: C:/Users/dell/AppData/Local/Programs/Python/Python39/Scripts/SX.py ===
+True
+True
+True
+
+Because the function is only examining the "c" in the quotation while it is declared, it will always return true even if there are no lower case letters because it is only examining the "c" alone.
+It also returns yes and false as strings rather than a boolean value.
+
+#INPUT:
+#3
+def any_lowercase3(s):
+for c in s:
+flag = c.islower()
+return flag
+
+print(any_lowercase3("BaNanA"))# This will return False
+print(any_lowercase3("bananA"))# This will return False
+print(any_lowercase3("BANana"))# This will return True
+
+#OUTPUT:
+=== RESTART: C:/Users/dell/AppData/Local/Programs/Python/Python39/Scripts/SX.py ===
+False
+False
+True
+
+This function only evaluates the string's last character; it will return true if the string's last character is in lower case. It will return false even though every other character is lower case except the last one
+
+#INPUT:
+# 4
+def any_lowercase4(s):
+flag = False
+for c in s:
+flag = flag or c.islower()
+return flag
+print(any_lowercase4("bAnanA"))# This will return True
+print(any_lowercase4("bananA"))# This will return True
+print(any_lowercase4("BANANA"))# This will return False
+
+#OUTPUT:
+=== RESTART: C:/Users/dell/AppData/Local/Programs/Python/Python39/Scripts/SX.py ===
+True
+True
+False
+
+This is the function that does exactly what we want it to do. It will examine each character in the string and return true if any is lower case and false if nothing else is.
+
+#INPUT:
+# 5
+def any_lowercase5(s):
+for c in s:
+if not c.islower():
+return False
+return True
+
+print(any_lowercase5("banana"))#This will return True
+print(any_lowercase5("bananA"))#This will return False
+print(any_lowercase5("BANANA")) #This will return False
+
+#OUTPUT:
+=== RESTART: C:/Users/dell/AppData/Local/Programs/Python/Python39/Scripts/SX.py ===
+True
+False
+False
+
+Reference:
+
+Downey, A. (2015). Think Python, How to think like a computer scientist. This book is licensed under Creative Commons Attribution Noncommercial 3.0 Unported (CC BY-NC 3.0) Wikipedia (2021). Precondition. Retrieved: https://en.m.wikipedia.org/wiki/Precondition.
+384 words
+
+Rate: 
+Rate...
+Picture of Mimori Kyoma
+In reply to Chante Plaatjies
+Re: Discussion Assignment Unit 5
+by Mimori Kyoma - Tuesday, 14 December 2021, 7:08 AM
+Hello Shante. I was glad that your explanation about #1~#4 was same with mine. However, you seemed to forget the explanation about #5. Also, if you possible, you should think about indenting and formatting your code so that it is easy to understand and works quickly when copied and pasted. Thank you.
+52 words
+
+Picture of Hein Zaw
+In reply to Chante Plaatjies
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Tuesday, 14 December 2021, 5:34 PM
+Hi Chante Plaatjies,
+Your explanations of the functions are easy to understand. But, you need to add explanation to #5 function. To format the code, you first need to click Advanced when replying the post. Then, select the code and click the 'A' button with an arrow pointing downwards. After that, you need to select Pre-formatted even if the code looks already preformatted. You can also change the format after you posted to the forum in five minutes. During that five minutes, you need to check your post format and errors. You can edit any format or typos in five minutes.
+101 words
+
+Picture of Md Sabbir Rahman
+In reply to Chante Plaatjies
+Re: Discussion Assignment Unit 5
+by Md Sabbir Rahman - Wednesday, 15 December 2021, 11:16 AM
+Hello Chante,
+Nice work. keep it up. But you didn't provide any explanation. If you add next time then it will be easy for us to understand.
+Thank you.
+Regards,
+Sabbir
+31 words
+
+Picture of Alfred Malome
+In reply to Chante Plaatjies
+Re: Discussion Assignment Unit 5
+by Alfred Malome - Wednesday, 15 December 2021, 10:02 PM
+Thanks for sharing in this week's discussion. Your answers are of great importance to this study as they are clear and easy to understand. Nice job.
+26 words
+
+Picture of Nurul Huda Ibrahim
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Monday, 13 December 2021, 10:32 PM
+
+
+# input,no 1:
+def any_lowercase1(s):
+     for c in s:
+          if c.islower():
+               return True
+          else:
+               return False
+
+print(any_lowercase1('Home'))
+
+#output, no 1:
+*** Remote Interpreter Reinitialized ***
+False
+>>>
+
+# EXPLAINATION:
+# This function returns True or False depending on whether the first letter
+# of the string is lowercase. Because the initial letter " H " is not a lowercase,
+# it returns False, and if the condition fails, it falls back to the " else " condition,
+# which also returns False. Otherwise, it will execute the " if " condition and return True
+# if just the first letter was in lowercase and the rest was uppercase.
+#_____________________________________________________________________________________________
+
+
+
+# input, no 2:
+def any_lowercase2(s):
+     for c in s:
+          if 'c'.islower():
+               return 'True'
+          else:
+               return 'False'
+
+print (any_lowercase2 ('HOME'))
+
+# output, no 2:
+*** Remote Interpreter Reinitialized ***
+True
+>>> 
+
+#   OTHER EXAMPLE
+# input, no 2:
+def any_lowercase2(s):
+     for c in s:
+          if 'c'.islower():
+               return 'True'
+          else:
+               return 'False'
+
+print (any_lowercase2 ('6108'))
+
+# output, no 2:
+*** Remote Interpreter Reinitialized ***
+True
+>>> 
+
+# EXPLAINATION:
+# Because the program is only evaluating the 'c' in the quotation marks when the function is defined,
+# it will always return true even if there are no lower case letters because it is only evaluating the 'c'
+# in the quotation. It also returns yes and false as strings rather than a boolean value.
+# It will return true even if the argument is not an alphabetical character since it will return true on
+# any string within the argument; it is just looking at the 'c' which was in lower case when the function was defined.
+#____________________________________________________________________________________________________________________
+
+
+
+#input, no 3:
+def any_lowercase3(s):
+     for c in s:
+          flag = c.islower()
+     return flag
+
+print (any_lowercase3 ('hOmE'))
+
+# output, no 3:
+*** Remote Interpreter Reinitialized ***
+False
+>>>
+
+# EXPLAINATION:
+# This function only evaluates the string's final character,
+# and it returns true if the string's last character is in lowercase.
+# It will return false, even if every other letter is in lowercase except the final character.
+# Furthermore, this function would be only true if all letters in the string are lowercase or the final character
+# is in lower case, and because we have an uppercase 'hOmE' as E is in uppercase in our print statement,
+# it returned into False.
+#_____________________________________________________________________________________________________________________
+
+
+
+# input, no 4:
+def any_lowercase4(s):
+     flag = False
+     for c in s:
+          flag = flag or c.islower()
+     return flag
+
+print (any_lowercase4 ('HOME'))
+
+# output, no 4:
+*** Remote Interpreter Reinitialized ***
+False
+>>>
+
+#   OTHER EXAMPLE
+# input, no 4:
+def any_lowercase4(s):
+     flag = False
+     for c in s:
+          flag = flag or c.islower()
+     return flag
+
+print (any_lowercase4 ('hOME'))
+
+# output, no 4:
+*** Remote Interpreter Reinitialized ***
+True
+>>> 
+
+# EXPLAINATION:
+# This is the function that does exactly what we want it to do.
+# It will evaluate each character in the string and return true if any is lowercase and false when it is none.
+# The results are correct, indicating that the function is performing as expected.
+#_______________________________________________________________________________________________________________
+
+
+
+# input, no 5:
+def any_lowercase5(s):
+     for c in s:
+          if not c.islower():
+               return False
+     return True
+
+print(any_lowercase5('hoMe'))
+
+# output, no 5:
+*** Remote Interpreter Reinitialized ***
+False
+>>>
+# EXPLAINATION:
+# Only if all of the characters in the string are lower case will this function return true.
+# If it doesn't, it'll always return false.
+# Even though only one character is not the lowercase is returned false.
+613 words
+
+Rate: 
+8
+Picture of Mikhail Chirkov
+In reply to Nurul Huda Ibrahim
+Re: Discussion Assignment Unit 5
+by Mikhail Chirkov - Tuesday, 14 December 2021, 1:47 PM
+Hi, I like the way you formatted your response and explanations are complete and precise.
+15 words
+
+Picture of Nurul Huda Ibrahim
+In reply to Mikhail Chirkov
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Tuesday, 14 December 2021, 11:00 PM
+Thank you Mikhail.
+3 words
+
+Picture of Hein Zaw
+In reply to Nurul Huda Ibrahim
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Tuesday, 14 December 2021, 5:45 PM
+Nice format and clear explanation. Your post is flawless. I think this is the first time your post is using hilite.me.
+21 words
+
+Picture of Nurul Huda Ibrahim
+In reply to Hein Zaw
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Tuesday, 14 December 2021, 11:03 PM
+Thanks Hein. Yeah, this is my first time after trial and error within 5 minutes time. It was crucial though. And finally, I managed. Thanks to you and Mimori too. You guys inspire me to do better.
+37 words
+
+Picture of Hein Zaw
+In reply to Nurul Huda Ibrahim
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Wednesday, 15 December 2021, 1:50 PM
+I would like to try that format too. But, I am afraid it does not work well in my post.
+20 words
+
+Picture of Muhammad Daniyal Khan
+In reply to Nurul Huda Ibrahim
+Re: Discussion Assignment Unit 5
+by Muhammad Daniyal Khan - Wednesday, 15 December 2021, 7:25 PM
+Dear Mr.Nurul Huda, Nice work and I really appreciate your hard work, efforts, and full dedication in this discussion assignment and I hope that you will continue it in your later assignment. I tried your code it's giving the correct output result. I hope that you will continue it in your later assignment Atlast, Great work Brother. Keep it up .
+61 words
+
+Picture of Sserebe Nasser
+In reply to Nurul Huda Ibrahim
+Re: Discussion Assignment Unit 5
+by Sserebe Nasser - Wednesday, 15 December 2021, 8:46 PM
+hello
+indeed this is good work , i love it and this simply shows how you knew what you were doing and easy for me to learn from it. thanks
+30 words
+
+Picture of Mark Sikaundi
+Re: Discussion Assignment Unit 5
+by Mark Sikaundi - Wednesday, 15 December 2021, 10:10 PM
+good work sir, will try to run some practice
+9 words
+
+Picture of Muhammad Daniyal Khan
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Muhammad Daniyal Khan - Tuesday, 14 December 2021, 12:53 AM
+Answer: 1
+Python Script 
+def any_lowercase1(s):
+     for c in s:
+          if c.islower():
+               return True
+          else:
+               return False
+
+Output Script 
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+= RESTART: D:\Users\khan.daniyal\OneDrive - Mitsubishi Electric Saudi Ltd\Desktop\Test.py
+
+>>>any_lowercase1('Cat') 
+False
+
+any_lowercase1('cat')
+True
+
+Description: 
+When I interpret the first time with a capital letter C for an argument Cat then after that I run it, I got False in the output result but when I interpret second time with a small letter c for an argument cat and after that, I run it. I got True in the output result because in python the result is totally based on the first letter of the string like here in our program, we used s. So, in python, the first character of the string is tested first and then after that, it returns a Boolean statement. 
+
+Answer: 2
+
+Python Script 
+
+def any_lowercase2(s):
+     for c in s:
+          if 'c'.islower():
+               return 'True'
+          else:
+               return 'False'
+print (any_lowercase2('Apple'))
+print (any_lowercase2('apple'))
+print ( any_lowercase2('APPLE'))
+
+Output
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+= RESTART: D:\Users\khan.daniyal\OneDrive - Mitsubishi Electric Saudi Ltd\Desktop\Test.py
+
+True
+True
+True
+
+Description: 
+In this function I got the True result 3 times in the output as I used the first uppercase letter, then all lowercase letters, and then all uppercase letters but in all conditions, I got True result why because this function checks only the string ’c ’ with quotation marks which is a lowercase that’s why always return True.
+
+Answer3:
+
+Python Script:
+
+def any_lowercase3(s):
+     for c in s:
+          flag = c.islower()
+     return flag
+print (any_lowercase3('Orange'))
+print (any_lowercase3('orange'))
+print (any_lowercase3('ORANGE'))
+print (any_lowercase3('orangE'))
+
+Output:
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+= RESTART: D:\Users\khan.daniyal\OneDrive - Mitsubishi Electric Saudi Ltd\Desktop\Test.py
+True
+True
+False
+False
+
+Description: 
+In this function  I have mentioned orange in a print statement 4 times with different letters like first I put O uppercase and all lowercase letters after that all lowercase letters and the third one all uppercase letters and the last one is all lowercase except the last character and in the output result, I got TRUE 2 times and False also 2 times why because the result depends on the last letter of the given string as if the last character is uppercase the result will be False otherwise it will be True.
+
+
+
+
+
+
+Answer 4:
+
+def any_lowercase4(s):
+     flag = False
+     for c in s:
+          flag = flag or c.islower()
+     return flag
+
+print (any_lowercase4('Mango'))
+print (any_lowercase4('mangO'))
+print (any_lowercase4('mango'))
+print (any_lowercase4('MANGO'))
+
+Output:
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+= RESTART: D:\Users\khan.daniyal\OneDrive - Mitsubishi Electric Saudi Ltd\Desktop\Test.py
+True
+True
+True
+False
+
+Description:
+This function is working correctly because in this function 'flag' is equal to False and it has the variable of a Boolean expression. In this function, I got True 3 times and False one time in an output result. In the first time, the first letter M was capital and the second time last letter O was capital 
+third, all lowercase letters, and the fourth one is all uppercase letters.So, the last word MANGO was capital due to that it raised the flag which is equal to False that’s why it displays False in the output result. 
+
+Answer5: 
+
+def any_lowercase5(s):
+     for c in s:
+          if not c.islower():
+               return False
+     return True
+print (any_lowercase5('danger'))
+print (any_lowercase5('Danger'))
+print (any_lowercase5('dangeR'))
+print (any_lowercase5('DANGER'))
+
+Output:
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+= RESTART: D:\Users\khan.daniyal\OneDrive - Mitsubishi Electric Saudi Ltd\Desktop\Test.py
+True
+False
+False
+False
+
+Description:
+In this function, I got 1 True and 3 False output results. This is because if all letters in an argument which is danger is lowercase then it will
+return True otherwise it will return False because of the 'not' logical operator which is a Boolean Expression that makes True be False.
+
+
+698 words
+
+Rate: 
+Rate...
+Picture of Chante Plaatjies
+In reply to Muhammad Daniyal Khan
+Re: Discussion Assignment Unit 5
+by Chante Plaatjies - Tuesday, 14 December 2021, 11:15 AM
+Hi
+
+Your explanations are very easy to understand. Thank you for your insights.
+13 words
+
+Picture of Md Sabbir Rahman
+In reply to Muhammad Daniyal Khan
+Re: Discussion Assignment Unit 5
+by Md Sabbir Rahman - Wednesday, 15 December 2021, 11:13 AM
+Hello Daniyal,
+Your explanation is quite hard to understand. In your 4th code, I don't understand what are you trying to say. Please, it will be great if you reply. otherwise, your inputs and outputs are good. It is neat and clear.
+
+Regards,
+Sabbir
+44 words
+
+Picture of Muhammad Daniyal Khan
+In reply to Md Sabbir Rahman
+Re: Discussion Assignment Unit 5
+by Muhammad Daniyal Khan - Wednesday, 15 December 2021, 7:33 PM
+Dear Brother, I have explained there that the function flag = False, and in the Output result i Received True 3 times and False 1 time and
+after that, I explained how I got True 3 times and False 1 time
+which means according to the program it will not show the False result unless all letters of a word are uppercase or in Capital letters. I hope that it will clear your double.
+74 words
+
+Picture of Hein Zaw
+In reply to Muhammad Daniyal Khan
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Wednesday, 15 December 2021, 1:55 PM
+Your explanation about question 5 is not quite clear. It would be better if you explain more clearly. However, the other explanations are great.
+24 words
+
+Picture of Muhammad Daniyal Khan
+In reply to Hein Zaw
+Re: Discussion Assignment Unit 5
+by Muhammad Daniyal Khan - Wednesday, 15 December 2021, 7:39 PM
+Dear Mr.Hein, First of all, thank you for your good comments. In question number 5 I explained that if there is any uppercase letter in an argument the result will be False and the output result will become True only when all characters would be lowercase. I hope that you will understand now.
+53 words
+
+Picture of Hein Zaw
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Tuesday, 14 December 2021, 2:22 PM
+# 1
+def any_lowercase1(s):
+     for c in s:
+          if c.islower():
+               return True
+          else:
+               return False
+print(any_lowercase1("Apple"))
+Output:
+False
+
+Explanation for #1:
+
+This function any_lowercase1 checks only if the first character of the string is in lowercase. Although the function traverses the string, the function will return True if the first character is in lowercase or will return False if the first character is not in lowercase. The loop iterates only once and returns True or False. So, the function will not iterate through the end of the string.
+
+When calling the function any_lowercase1 with a string argument "Apple", the function only checked the first character 'A' and returned False. The function did not check the remaining lowercase characters 'pple'. Therefore, the any_lowercase1 function is wrong.
+
+# 2
+def any_lowercase2(s):
+     for c in s:
+          if 'c'.islower():
+               return 'True'
+          else:
+               return 'False'
+print(any_lowercase2("APPLE"))
+Output:
+True
+
+Explanation for #2:
+
+This function any_lowercase2 will always return 'True' because the if condition statement 'c'.islower() is true. The function will never return 'False' if the string is given as an argument. This function also iterates only once.
+
+When calling the function any_lowercase2 with a string argument "APPLE", the function returns 'True' because the boolean expression is always true. This function did not check the string argument. Therefore, the any_lowercase2 function is wrong.
+
+# 3
+def any_lowercase3(s):
+     for c in s:
+          flag = c.islower()
+     return flag
+print(any_lowercase3("fruiT"))
+Output:
+False
+
+Explanation for #3:
+
+This function any_lowercase3 stores the boolean value in the local variable named flag. But, as the function traverses through the string, flag is updated its boolean value in string traversal. At the end of string traversal, flag has the boolean value which depends on the last character of the string. If the last character is in lowercase, flag has the value of True. Otherwise, flag has the value of False. This function any_lowercase3 returns the flag after the loop is completed. So, only the last character of the string is checked.
+
+When calling the function any_lowercase3 with a string argument "fruiT", the last character of the string is not in lowercase, so the function returns False. Although every character of the string is checked, flag is updated with the last character at the end. So, flag has the boolean value of False when "fruiT" is given as an argument. Therefore, the any_lowercase3 function is wrong.
+
+# 4
+def any_lowercase4(s):
+     flag = False
+     for c in s:
+          flag = flag or c.islower()
+     return flag
+print(any_lowercase4("STRiNG"))
+print(any_lowercase4("LARGE"))
+Output:
+True
+False
+
+Explanation for #4:
+
+The function any_lowercase4 is working correctly. The variable flag is first assigned with the boolean value of False. Then, flag is updated using the logical operator 'or' during the string traversal. Each character is checked if it is in lowercase or not by a string method islower(). And, compare the result with flag, which is first assigned with False, using the logical operator 'or'. When the islower() method returns True, the variable flag is updated True. Once the flag is True, it cannot be False again because of the logical operator or. After the string traversal, the function returns flag.
+
+When calling the function any_lowercase4 with a string argument "STRiNG", flag is False when traversing "STR" and is True when reaching 'i'. Then, it cannot be false again. At the end, the function returns True.
+
+When calling the function any_lowercase4 with a string argument "LARGE", the function returns False since the string has no lowercase letters.
+
+# 5
+def any_lowercase5(s):
+    for c in s:
+        if not c.islower():
+           return False
+    return True
+print(any_lowercase5("Bag"))
+Output:
+False
+
+Explanation for #5:
+
+The function any_lowercase5 checks if all characters in the string are in lowercase. If they are in the lowercase, the function returns True. If there is any character that is not in the lowercase, the function returns False.
+
+When calling the function any_lowercase5 with a string argument "Bag", the function returns False because the first character 'B' is not in lowercase. Therefore, this function any_lowercase5 is wrong.
+
+660 words
+
+Rate: 
+9
+Picture of Nurul Huda Ibrahim
+In reply to Hein Zaw
+Re: Discussion Assignment Unit 5
+by Nurul Huda Ibrahim - Tuesday, 14 December 2021, 10:58 PM
+Hi Hein,
+
+I like the way you explained everything in detail. It was flawless and neat. Perhaps I can learn more from you. Thanks for all your inputs and explanations. Great job, keep up the great work.
+37 words
+
+Picture of Md Sabbir Rahman
+In reply to Hein Zaw
+Re: Discussion Assignment Unit 5
+by Md Sabbir Rahman - Wednesday, 15 December 2021, 11:03 AM
+Hello Hein,
+You did a good work. I had some confusion about this but now it's clear. And I think if you add some more examples , then it would be great. You need to add APA citation and references in your work.
+
+Regards,
+Sabbir
+45 words
+
+Picture of Sserebe Nasser
+In reply to Hein Zaw
+Re: Discussion Assignment Unit 5
+by Sserebe Nasser - Wednesday, 15 December 2021, 8:44 PM
+woow , Hein i have liked how you have broadly explained your codes in details, it really adds a lot of knowledge to me, thanks for the explaination and yes i have learnt a few things and added to my understanding
+41 words
+
+Picture of Mark Sikaundi
+Re: Discussion Assignment Unit 5
+by Mark Sikaundi - Wednesday, 15 December 2021, 10:09 PM
+hi, i live the way you have expained your work....its really giving alot of informations
+15 words
+
+Picture of Md Sabbir Rahman
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Md Sabbir Rahman - Tuesday, 14 December 2021, 5:02 PM
+1st Function:
+
+            Input: >>> def any_lowercase1(s):
+
+...     for c in s:
+
+...         if c.islower(): # Checks only first letter in a string if it is lowercase or not and returns boolean.
+
+...             return True
+
+...         else:
+
+...             return False
+
+ 
+
+>>> any_lowercase1("good")
+
+>>> any_lowercase1("Good")
+
+>>> any_lowercase1("hide")
+
+            Output:
+
+1.     True
+
+2.     False
+
+3.     True
+
+ 
+
+2nd Function:
+
+            Input: >>> def any_lowercase2(s):
+
+...     for c in s:           # Checks if string 'c' is lowercase or not and returns string 'True'; Returns 'True' every time. Here, given argument doesn't matter;
+
+...         if 'c'.islower():
+
+...             return 'True'
+
+...         else:
+
+...             return 'False'
+
+ 
+
+>>> any_lowercase2('GOOD')
+
+>>> any_lowercase2('good')
+
+>>> any_lowercase2('GooD')
+
+            Output:
+
+1.     'True'
+
+2.     'True'
+
+3.     'True'
+
+ 
+
+3rd Function:
+
+            Input: >>> def any_lowercase3(s):
+
+...     # Checks if each letter in string is lowercased or not and assigned the outcome to the variable 'flag'; New value is assigned to 'flag' with every checked letter;  
+
+...     for c in s:
+
+...         flag = c.islower() #Returnes true only in the last character is lower. Despite the string has lower character in it, function returnes False.
+
+...     return flag
+
+ 
+
+>>> any_lowercase3("gooD")
+
+>>> any_lowercase3("good")
+
+>>> any_lowercase3("GOOd")
+
+            Output:
+
+1.     False
+
+2.     True
+
+3.     True
+
+4th Function:
+
+            Input: >>> def any_lowercase4(s):
+
+...     flag = False
+
+...     for c in s:     # Correctly checks if there is any lowercased letter in any position of the given string;
+
+...         flag = flag or c.islower()
+
+...     return flag
+
+...
+
+ 
+
+>>> any_lowercase4("good")
+
+>>> any_lowercase4("GOOD")
+
+            Output:
+
+1.     True
+
+2.     False
+
+5th Function:
+
+            Input: >>> def any_lowercase5(s):
+
+...     for c in s:
+
+...         if not c.islower():   # Checks every letter if it is not lowercased and returns true only if all symbols in the string are lower and false otherwise.
+
+...             return False
+
+...     return True
+
+ 
+
+>>> any_lowercase5("good")
+
+>>> any_lowercase5("GOOD")
+
+>>> any_lowercase5("GOOd")
+
+            Output:
+
+1.     True
+
+2.     False
+
+3.     False
+
+ 
+
+References:
+
+Downey, A. (2015). Think Python: How to think like a computer scientist. Green Tea Press.
+
+
+314 words
+
+Rate: 
+Rate...
+Picture of Hein Zaw
+In reply to Md Sabbir Rahman
+Re: Discussion Assignment Unit 5
+by Hein Zaw - Wednesday, 15 December 2021, 1:58 PM
+You need to explain more about all functions. You need to identify which function is correct for the intended function. Since, these two are the main purposes of the discussion forum.
+31 words
+
+Picture of Melash Molla
+In reply to Md Sabbir Rahman
+Re: Discussion Assignment Unit 5
+by Melash Molla - Wednesday, 15 December 2021, 4:19 PM
+we need more explanation on each cases, u need to have to explain each cases crealy.
+16 words
+
+Picture of Saifullahi Abubakar
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Saifullahi Abubakar - Wednesday, 15 December 2021, 2:18 PM
+#1
+
+Return True if the string is lowercase.
+
+And 
+
+Return False if the string is  uppercase.
+
+
+
+#2
+
+Return  True (string ) if The argument is lowercase.
+
+And
+
+Return  False(string ) if The argument is uppercase.
+
+
+
+#3
+
+Perform looping of the in a lowercase alphabets
+
+
+
+#4
+
+The function will return false or convert the string to uppercase.
+
+#5
+
+57 words
+
+Rate: 
+Rate...
+Picture of Melash Molla
+In reply to Saifullahi Abubakar
+Re: Discussion Assignment Unit 5
+by Melash Molla - Wednesday, 15 December 2021, 4:21 PM
+Hello Abubakar,
+Please elaborate and explain detaily.
+7 words
+
+Picture of Melash Molla
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Melash Molla - Wednesday, 15 December 2021, 3:47 PM
+# 1
+
+def any_lowercase1(s):
+for c in s:
+if c.islower():
+return True
+else:
+return False
+Input = any_lowercase1(Melash)
+output is false becuase the first character of the string is tested and it is uppercase.
+the statment will result true if and only if the the fisrt letter in s is lowercase.
+
+# 2
+
+def any_lowercase2(s):
+for c in s:
+if 'c'.islower():
+return 'True'
+else:
+return 'False'
+input = any_lowercase2('MELASH')
+output is True because of all character 'c' of the string is uppercase. if I use the input any_lowercase2('MElash'), the result of the statment will completed with Syntax error; becuase
+'C' can't test lowecase.
+
+# 3
+
+def any_lowercase3(s):
+for c in s:
+flag = c.islower()
+return flag
+
+The statement is about returning true if the last character of the string is lower.
+Input: any_lowercase3('melasH')
+output: false because the last character is not lower case.
+
+# 4
+
+def any_lowercase4(s):
+flag = False
+for c in s:
+flag = flag or c.islower()
+return flag
+Input: any_lowercase4(MELASH)
+output: false , this is due to the 'or' logical operator is false for flag or c.is lowercase(s).
+
+# 5
+
+def any_lowercase5(s):
+for c in s:
+if not c.islower():
+return False
+return True
+
+input: any_lowercase5('melash')
+output: True, becuase all the values in the string are lowercase.
+209 words
+
+Rate: 
+Rate...
+Picture of Sserebe Nasser
+In reply to Melash Molla
+Re: Discussion Assignment Unit 5
+by Sserebe Nasser - Wednesday, 15 December 2021, 8:40 PM
+hello Melash Molla
+well i am impressed with how you descirbed your codes, actually we all have different approaches but again worthy for learning. thanks for sharing good work
+29 words
+
+Picture of Sserebe Nasser
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Sserebe Nasser - Wednesday, 15 December 2021, 8:07 PM
+# 1
+def any_lowercase1(s):
+for c in s:
+if c.islower():
+return True
+else:
+return False
+DESCRIPTION: The function works correctly, and it checks for each letter in a word however if the letter isn't lower or not a letter. The function will return False and return true if the letter is lower. The result is best on the first letter of the string.
+# 2
+def any_lowercase2(s):
+for c in s:
+if 'c'.islower():
+return 'True'
+else:
+return 'False'
+DESCRIPTION: in this function we get such an error Syntax Error: can't assign to literal, so it doesn’t work correctly because ‘c’ is a string and cannot test .islower():
+
+# 3
+def any_lowercase3(s):
+for c in s:
+flag = c.islower()
+return flag
+DESCRIPTION: for this function the result is based on the last letter for a given string s, each is assigned to a variable flag. The characters are checked.
+
+
+
+# 4
+def any_lowercase4(s):
+flag = False
+for c in s:
+flag = flag or c.islower()
+return flag
+DESCRIPTION: the function works correctly and flag is equal to false and contains a Boolean variable expression. The ‘or’ logical operator is false for flag or c.islower ():
+
+# 5
+
+def any_lowercase5(s):
+for c in s:
+if not c.islower():
+return False
+return True
+DESCRIPTION: the function will return true only if all letters in the string s are lowercase. So the functions looks for uppercase letters since they have used a keyword of ‘not’ . this reverses it
+244 words
+
+Rate: 
+Rate...
+Picture of Alfred Malome
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Alfred Malome - Wednesday, 15 December 2021, 9:46 PM
+#This function is proper. It checks each letter in the word, if the letter is not lower, or it is a letter, the function returns false, if the letter is lower, the function returns True.
+def any_lowercase1(s):
+for c in s:
+if c.islower():
+return True
+else:
+return False
+In: any_lowercase1("table")
+print (any_lowercase1("table"))
+output
+== RESTART: C:/Users/USER/AppData/Local/Programs/Python/Python310/describe.py ==
+True
+Quiz 2
+#This functions is not working properly since apostrophe in the c.islower causes mistakes that hinders the function from running properly.
+def any_lowercase2(s):
+for c in s:
+if 'c'.islower():
+return 'True'
+else:
+return 'False'
+In: any_lowercase2("Table")
+print (any_lowercase2("Table"))
+output
+== RESTART: C:/Users/USER/AppData/Local/Programs/Python/Python310/describe.py ==
+True
+Quiz 3
+#The function is operational. It checks each letter in the word as it assigns it to a variable flag
+def any_lowercase3(s):
+for c in s:
+flag = c.islower()
+return flag
+
+In: any_lowercase3("TABLe")
+print (any_lowercase3("TABLE"))
+output
+quiz 4
+#the function is working properly
+def any_lowercase4(s):
+flag = False
+for c in s:
+flag = flag or c.islower()
+return flag
+
+In: any_lowercase4("TABLe")
+print (any_lowercase4("TABLe"))
+output
+== RESTART: C:/Users/USER/AppData/Local/Programs/Python/Python310/describe.py ==
+False
+Quiz 5.
+The function works properly as it checks lower letters in the string.
+def any_lowercase5(s):
+for c in s:
+if not c.islower():
+return False
+return True
+200 words
+
+Rate: 
+9
+Picture of Mark Sikaundi
+Re: Discussion Assignment Unit 5
+by Mark Sikaundi - Wednesday, 15 December 2021, 10:07 PM
+great work done, have learned quit something in your codes
+10 words
+
+Picture of Mark Sikaundi
+In reply to Alen Savatic (Instructor)
+Re: Discussion Assignment Unit 5
+by Mark Sikaundi - Wednesday, 15 December 2021, 9:50 PM
+###### 1
+def any_lowercase1(s):
+"""Actually returns True whether _first_ letter is lowercase otherwise False
+
+Incorrect result: argument has three lowercase 'z' - expected True
+>>> any_lowercase1('Bzzz')
+False
+"""
+for c in s:
+if c.islower():
+return True
+else:
+return False
+
+######## 2
+def any_lowercase2(s):
+"""Actually _always_ retuns _string_ "True"
+
+Incorrect result: argument has no lowercase letters - expected False
+>>> any_lowercase2('UEFA')
+'True'
+"""
+for c in s:
+if 'c'.islower():
+return 'True'
+else:
+return 'False'
+
+######## 3
+def any_lowercase3(s):
+"""Actually returns True whether _last_ letter is lowercase otherwise False
+
+Incorrect result: argument has four lowercase 'd' - expected True
+>>> any_lowercase3('ddddD')
+False
+"""
+for c in s:
+flag = c.islower()
+return flag
+
+# ###4
+def any_lowercase4(s):
+"""Actually returns True whether _any_ letter is lowercase otherwise False
+No incorrect results
+
+Argument has lowercase 'x' - expected True
+>>> any_lowercase4('Ux')
+True
+
+Argument nas no lowercase letters - expected False
+>>> any_lowercase4('BAR')
+False
+"""
+flag = False
+for c in s:
+flag = flag or c.islower()
+return flag
+
+# ## 5
+def any_lowercase5(s):
+"""Actually returns True whether _all_ letters is lowercase otherwise False
+
+Incorrect result: all letters in argument except 'E' are lowercase - expected True
+>>> any_lowercase5('abcdEfg')
+False
+"""
+for c in s:
+if not c.islower():
+return False
+return True
+
+if __name__ == '__main__':
+import doctest
+doctest.testmod(verbose=True)
+213 words
